@@ -2,7 +2,6 @@ version: 2.1
 
 orbs:
   aws-cli: circleci/aws-cli@2.0.3
-  aws-assume-role: arn:aws:iam::550121635015:role/account-admin
 
 jobs:
   create_infrastructure: 
@@ -17,6 +16,7 @@ jobs:
               --template-file template.yml \
               --stack-name myStack-${CIRCLE_WORKFLOW_ID:0:5} \
               --region $AWS_DEFAULT_REGION
+              --role-arn arn:aws:iam::550121635015:role/account-admin
 
 workflows:
   my_workflow:
